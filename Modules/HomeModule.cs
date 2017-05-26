@@ -61,6 +61,10 @@ namespace Contacts.Objects
         Contact selectedContact = Contact.Find(parameters.id);
         return View["contact.cshtml", selectedContact];
       }; //returns page depicting single instance of Contact constructor
+      Get["/clear-contacts"] =_=> {
+       Contact.ClearAll();
+       return View["clear.cshtml"];
+     };
     }
   }
 }
