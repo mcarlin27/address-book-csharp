@@ -32,11 +32,11 @@ namespace Contacts.Objects
     {
       return _instances[searchId-1];
     }
-    public List<Contact> ViewContacts()
+    public List<Contact> GetContacts()
     {
       return _contacts;
     }
-    public void AddContact(Contact contact)
+    public void SetContact(Contact contact)
     {
       _contacts.Add(contact);
     }

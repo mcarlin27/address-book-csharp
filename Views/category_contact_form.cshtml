@@ -1,0 +1,9 @@
+<h1>Add a contact to @Model["category"].GetTitle()</h1>
+<p>Add a contact here:</p>
+<form action="/contacts" method="post">
+  <input id="category-id" name="category-id" type="hidden" value='@Model["category"].GetId()'>
+  <label for="contact-name">Name</label>
+  <input type="text" name="contact-name" id="contact-name">
+  <button type="submit">Add</button>
+</form>
+<p><a href="/">Back Home</a></p>
