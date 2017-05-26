@@ -18,6 +18,9 @@ namespace Contacts.Objects
       Get["/category/new"] = _ => {
         return View["category_form.cshtml"];
       }; //returns form for user inputted contact category
+      Get["/contact/new"] = _ => {
+        return View["category_form.cshtml"];
+      }; //returns form for user inputted category, to encourage user to first add categories
       Get["/categories"] = _ => {
         List<Category> allCategories = Category.GetAll();
         return View["categories.cshtml", allCategories];
@@ -48,13 +51,16 @@ namespace Contacts.Objects
         Category selectedCategory = Category.Find(Request.Form["category-id"]);
         string categoryTitle = selectedCategory.GetTitle();
         List<Contact> categoryContacts = selectedCategory.GetContacts();
-        string contactName = Request.Form["contact-name"];
-        Contact newContact = new Contact(contactName);
+        Contact newContact = new Contact(Request.Form["contact-name"], Request.Form["contact-address"], Request.Form["contact-phone"]);
         categoryContacts.Add(newContact);
         model.Add("contacts", categoryContacts);
         model.Add("category", selectedCategory);
         return View["category_contacts.cshtml", model];
       }; //posts user submitted data from new contact form
+      Get["/contacts/{id}"] = parameters => {
+        Contact selectedContact = Contact.Find(parameters.id);
+        return View["contact.cshtml", selectedContact];
+      }; //returns page depicting single instance of Contact constructor
     }
   }
 }

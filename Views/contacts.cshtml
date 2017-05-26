@@ -6,6 +6,6 @@
 }
 @foreach (var contact in Model)
 {
-  <h3></contacts/@contact.GetId()>@contact.GetName()</h3>
+  <h3><a href="/contacts/@contact.GetId()">@contact.GetName()</a></h3>
 }
 <p><a href="/">Back Home</a></p>
