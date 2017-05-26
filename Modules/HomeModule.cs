@@ -11,6 +11,10 @@ namespace Contacts.Objects
       Get["/"] = _ => {
         return View["index.cshtml"];
       };
+      Get["/contacts"] = _ => {
+        List<Contact> allContacts = Contact.GetAll();
+        return View["contacts.cshtml", allContacts];
+      };
     }
   }
 }

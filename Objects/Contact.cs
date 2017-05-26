@@ -27,7 +27,7 @@ namespace Contacts.Objects
     {
       _name = newName;
     }
-    public static List<Contact> GettAll()
+    public static List<Contact> GetAll()
     {
       return _instances;
     }
