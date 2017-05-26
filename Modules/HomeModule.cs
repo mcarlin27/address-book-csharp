@@ -35,7 +35,26 @@ namespace Contacts.Objects
         model.Add("contacts", categoryContacts);
         return View["category_contacts.cshtml", model];
       }; //returns page depicting single instance of Category constructor
-      
+      Get["/categories/{id}/contacts/new"] = parameters => {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        Category selectedCategory = Category.Find(parameters.id);
+        List<Contact> categoryContacts = selectedCategory.GetContacts();
+        model.Add("category", selectedCategory);
+        model.Add("contacts", categoryContacts);
+        return View["category_contact_form.cshtml", model];
+      }; //directs user to a form to submit contacts for a particular category
+      Post["/contacts"] = _ => {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        Category selectedCategory = Category.Find(Request.Form["category-id"]);
+        string categoryTitle = selectedCategory.GetTitle();
+        List<Contact> categoryContacts = selectedCategory.GetContacts();
+        string contactName = Request.Form["contact-name"];
+        Contact newContact = new Contact(contactName);
+        categoryContacts.Add(newContact);
+        model.Add("contacts", categoryContacts);
+        model.Add("category", selectedCategory);
+        return View["category_contacts.cshtml", model];
+      }; //posts user submitted data from new contact form
     }
   }
 }
