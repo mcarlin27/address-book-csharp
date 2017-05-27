@@ -9,7 +9,8 @@ namespace Contacts.Objects
     public HomeModule()
     {
       Get["/"] = _ => {
-        return View["index.cshtml"];
+        List<Contact> allContacts = Contact.GetAll();
+        return View["index.cshtml", allContacts];
       }; //homepage
       Get["/contacts"] = _ => {
         List<Contact> allContacts = Contact.GetAll();
