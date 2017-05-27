@@ -1,4 +1,4 @@
-# CD List
+# Address Book
 
 #### A program that allows users to enter Contacts into an Address Book, separating those COntacts by Category with the aim to improve search functionality. 5/26/17
 

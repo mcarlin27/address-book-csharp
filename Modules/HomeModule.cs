@@ -65,7 +65,7 @@ namespace Contacts.Objects
       Get["/clear-contacts"] =_=> {
        Contact.ClearAll();
        return View["clear.cshtml"];
-     };
+     }; //clears all contacts
     }
   }
 }
